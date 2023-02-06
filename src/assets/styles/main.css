@@ -430,7 +430,7 @@ body {
 }
 
 .ant-dropdown.ant-dropdown-placement-bottomRight {
-  min-width: inherit !important;
+  min-width: 350px !important;
 }
 
 .ant-dropdown-menu.ant-dropdown-menu-split.header-notifications-dropdown
