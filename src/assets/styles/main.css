@@ -1854,21 +1854,26 @@ body {
   font-size: 16px;
 }
 .card-signup .sign-up-gateways .ant-btn {
-  margin-right: 10px;
-  margin-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
   height: 60px;
-  width: 70px;
+  width: 260px;
   box-shadow: none;
   border-radius: 6px;
+  padding-top: 10px
+
 }
 .card-signup {
   width: 100%;
   max-width: 500px;
   margin: auto;
-  box-shadow: 0 20px 27px rgb(0 0 0 / 5%);
-  border-radius: 12px;
+  /* box-shadow: 0 20px 27px rgb(0 0 0 / 5%);
+  border-radius: 12px; */
   margin-top: -190px;
   margin-bottom: 20px;
+  background: transparent;
+  border: none;
 }
 .card-signup h5 {
   text-align: center;
@@ -1881,7 +1886,10 @@ body {
   border-bottom: 0;
 }
 .card-signup .sign-up-gateways .ant-btn img {
-  width: 20px;
+  width: 40px;
+}
+.card-signup .sign-up-gateways .ant-btn span {
+  font-size: 20px;
 }
 .sign-up-gateways {
   text-align: center;
@@ -2193,9 +2201,9 @@ body {
   .card-signup {
     margin-bottom: 120px;
   }
-  .card-signup .sign-up-gateways .ant-btn {
-    width: 100px;
-  }
+  /* .card-signup .sign-up-gateways .ant-btn {
+    width: 260px;
+  } */
 }
 
 /* end sign up */

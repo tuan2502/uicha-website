@@ -575,7 +575,7 @@ const dataproject = [
   },
 ];
 
-function Tables() {
+function Customers() {
   const onChange = (e) => console.log(`radio checked:${e.target.value}`);
 
   return (
@@ -647,4 +647,4 @@ function Tables() {
   );
 }
 
-export default Tables;
+export default Customers;
