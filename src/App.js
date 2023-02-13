@@ -1,27 +1,51 @@
-import { Switch, Route, Redirect } from "react-router-dom";
-import Home from "./pages/Home";
-import Customers from "./pages/Customers";
-import Billing from "./pages/Billing";
-import Profile from "./pages/Profile";
-import SignIn from "./pages/SignIn";
-import Main from "./components/layout/Main";
-import 'antd/dist/antd.min.css';
+import "antd/dist/antd.min.css";
 import "./assets/styles/main.css";
 import "./assets/styles/responsive.css";
+import { Route, Routes } from "react-router-dom/dist";
+import Main from "./components/layout/Main";
+import Dashboard from "./pages/Dashboard";
+import Customers from "./pages/Customers";
+import Billing from "./pages/Billing";
+import SignIn from "./pages/SignIn";
+import Profile from "./pages/Profile";
+import { AuthContextProvider } from "./context/AuthContext";
+// import { publicRoutes } from './routes';
 
 function App() {
   return (
-    <div className="App"> 
-      <Switch>
-        <Route path="/sign-in" exact component={SignIn} />
-        <Main>
-          <Route exact path="/dashboard" component={Home} />
-          <Route exact path="/customers" component={Customers} />
-          <Route exact path="/billing" component={Billing} />
-          <Route exact path="/profile" component={Profile} />
-          <Redirect from="*" to="/dashboard" />
-        </Main>
-      </Switch>
+    <div className="App">
+      <AuthContextProvider>
+        <Routes>
+          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/" element={<Main />}>
+            {/* public routes */}
+
+            {/* private routes */}
+            <Route path="/" element={<Dashboard />} />
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="customers" element={<Customers />} />
+            <Route path="billing" element={<Billing />} />
+            <Route path="profile" element={<Profile />} />
+            <Route from="*" to="/dashboard" />
+          </Route>
+          {/* {publicRoutes.map((route, index) =>{
+          const Page = route.component;
+          // let PersonalLayout = 
+          return (
+          <Route
+          key={index}
+            path={route.path}
+            element={
+              <>
+              <Page />
+              </>
+            }
+            />
+            );
+            
+          })} */}
+        </Routes>
+      </AuthContextProvider>
     </div>
   );
 }

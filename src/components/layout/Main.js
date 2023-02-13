@@ -4,10 +4,28 @@ import { Layout, Drawer, Affix } from "antd";
 import Sidenav from "./Sidenav";
 import Header from "./Header";
 import Footer from "./Footer";
+import { Outlet } from "react-router-dom/dist";
+import { useNavigate } from "react-router-dom";
+import { UserAuth } from "../../context/AuthContext";
 
 const { Header: AntHeader, Content, Sider } = Layout;
 
-function Main({ children }) {
+const Main = ({ children }) => {
+
+  const { logout } = UserAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await logout()
+      navigate('/sign-in');
+      console.log('You are logged out')
+
+    } catch (e) {
+      console.log(e.message)
+    }
+  }
+
   const [open, setOpen] = useState(false);
   const [placement, setPlacement] = useState("right");
   const [sidenavColor, setSidenavColor] = useState("#1890ff");
@@ -80,7 +98,7 @@ function Main({ children }) {
         }`}
         style={{ background: sidenavType }}
       >
-        <Sidenav color={sidenavColor} />
+        <Sidenav handleLogout={handleLogout} color={sidenavColor} />
       </Sider>
       <Layout>
         {fixed ? (
@@ -109,7 +127,9 @@ function Main({ children }) {
           </AntHeader>
         )}
         <Content className="content-ant">{children}</Content>
+        <Outlet />
         <Footer />
+
       </Layout>
     </Layout>
   );

@@ -20,6 +20,7 @@ import { NavLink, Link } from "react-router-dom";
 import styled from "styled-components";
 import avtar from "../../assets/images/team-2.jpg";
 import { Bell, Clockicon, Credit, Logsetting, Profile, Setting, Toggler, Wifi } from "../Icons";
+import { UserAuth } from "../../context/AuthContext";
 
 
 const ButtonContainer = styled.div`
@@ -86,7 +87,10 @@ const items = [
   }, // remember to pass the key prop
 ];
 
-function Header({
+
+
+const Header =({
+  // user,
   placement,
   name,
   subName,
@@ -94,7 +98,8 @@ function Header({
   handleSidenavColor,
   handleSidenavType,
   handleFixedNavbar,
-}) {
+}) => {
+  const { user } = UserAuth();
   const { Title, Text } = Typography;
 
   const [open, setOpen] = useState(false);
@@ -239,11 +244,11 @@ function Header({
           </Drawer>
           <Link to="/sign-in" className="btn-sign-in">
             <Profile/>  
-            <span>Đăng nhập</span>
+            <span>{user && user.displayName}</span>
           </Link>
           <Input
             className="header-search"
-            placeholder="Tìm kiếm..."
+            placeholder="Search..."
             prefix={<SearchOutlined />}
           />
         </Col>

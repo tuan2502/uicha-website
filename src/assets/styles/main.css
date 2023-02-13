@@ -1,14 +1,4 @@
-/*!
-=========================================================
-* Muse Ant Design Dashboard - v1.0.0
-=========================================================
-* Product Page: https://www.creative-tim.com/product/muse-ant-design-dashboard
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/muse-ant-design-dashboard/blob/main/LICENSE.md)
-* Coded by Creative Tim
-=========================================================
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
+
 body {
   padding: 0 0 30px 0;
   background-color: #fafafa;
@@ -19,6 +9,9 @@ body {
   font-weight: 400;
   font-family: open sans, Helvetica, Arial, sans-serif;
 }
+/* .ant-layout{
+  padding: 0 10px
+} */
 .ant-layout.ant-layout-has-sider {
   flex-direction: row;
 }
@@ -374,6 +367,7 @@ body {
 .ant-layout.ant-layout-has-sider > .ant-layout,
 .ant-layout.ant-layout-has-sider > .ant-layout-content {
   overflow-x: hidden;
+  padding: 0 10px;
 }
 .layout-dashboard .ant-layout {
   background: transparent;
@@ -535,6 +529,16 @@ h4 {
   fill: #141414;
 }
 
+.sign-up-gateways div{
+  margin: auto;
+  border-radius: 8px !important;
+  overflow: hidden;
+  transition: all 0.5s !important;
+}
+
+.sign-up-gateways div:hover span{
+  color: #1890ff;
+}
 .layout-dashboard .header-control .btn-sign-in {
   height: auto;
   padding: 0 7px;
@@ -2616,7 +2620,8 @@ section.ant-layout.ant-layout-has-sider.layout-dashboard.layout-profile
 }
 
 section.ant-layout.ant-layout-has-sider.layout-dashboard.layout-profile
-  span.ant-breadcrumb-link {
+  span.ant-breadcrumb-link, section.ant-layout.ant-layout-has-sider.layout-dashboard.layout-profile
+  span.ant-breadcrumb-link a {
   color: #fff;
 }
 

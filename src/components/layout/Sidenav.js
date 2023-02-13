@@ -2,9 +2,16 @@
 import { Menu, Button } from "antd";
 import { NavLink, useLocation } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
-import { Billing, Customer, Dashboard, Profile, Signin, Signup } from "../Icons";
+import {
+  Billing,
+  Customer,
+  Dashboard,
+  Profile,
+  Signin,
+  Signout,
+} from "../Icons";
 
-const Sidenav = (color) => {
+const Sidenav = ({color,handleLogout}) => {
   const { pathname } = useLocation();
   const page = pathname.replace("/", "");
 
@@ -18,8 +25,7 @@ const Sidenav = (color) => {
               background: page === "dashboard" ? color : "",
             }}
           >
-            {/* {dashboard} */}
-            <Dashboard/>
+            <Dashboard />
           </span>
           <span className="label">Dashboard</span>
         </NavLink>
@@ -35,7 +41,7 @@ const Sidenav = (color) => {
               background: page === "customers" ? color : "",
             }}
           >
-            <Customer/>
+            <Customer />
           </span>
           <span className="label">Customers</span>
         </NavLink>
@@ -51,30 +57,14 @@ const Sidenav = (color) => {
               background: page === "billing" ? color : "",
             }}
           >
-            <Billing/>
+            <Billing />
           </span>
           <span className="label">Billing</span>
         </NavLink>
       ),
       key: "3",
     },
-    // {
-    //   label: (
-    //     <NavLink to="/rtl">
-    //       <span
-    //         className="icon"
-    //         style={{
-    //           background: page === "rtl" ? color : "",
-    //         }}
-    //       >
-    //         {rtl}
-    //       </span>
-    //       <span className="label">RTL</span>
-    //     </NavLink>
-    //   ),
-    //   key: "4",
-    // },
-    { label: "Account Pages", key: "5" },
+    { label: "Account Pages", key: "4" },
     {
       label: (
         <NavLink to="/profile">
@@ -84,21 +74,23 @@ const Sidenav = (color) => {
               background: page === "profile" ? color : "",
             }}
           >
-            <Profile/>
+            <Profile />
           </span>
           <span className="label">Profile</span>
         </NavLink>
       ),
-      key: "6",
+      key: "5",
     },
     {
       label: (
-        <NavLink to="/sign-in">
-          <span className="icon"><Signin/></span>
-          <span className="label">Sign In</span>
+        <NavLink to="/sign-in" onClick={handleLogout}>
+          <span className="icon">
+            <Signout />
+          </span>
+          <span className="label">Sign Out</span>
         </NavLink>
       ),
-      key: "7",
+      key: "6",
     },
   ];
 
@@ -110,20 +102,20 @@ const Sidenav = (color) => {
       </div>
       <hr />
       <Menu items={items} theme="light" mode="inline" />
-      <div className="aside-footer">
+      {/* <div className="aside-footer">
         <div
           className="footer-box"
           style={{
             background: color,
           }}
         >
-          <Button type="primary" className="ant-btn-sm ant-btn-block">
+          <Button onClick={handleLogout} type="primary" className="ant-btn-sm ant-btn-block">
             SIGN OUT
           </Button>
         </div>
-      </div>
+      </div> */}
     </>
   );
-}
+};
 
 export default Sidenav;
