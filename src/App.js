@@ -9,9 +9,33 @@ import Billing from "./pages/Billing";
 import SignIn from "./pages/SignIn";
 import Profile from "./pages/Profile";
 import { AuthContextProvider } from "./context/AuthContext";
+import { useEffect } from "react";
+import { getToken } from "firebase/messaging";
+import { messaging } from "./firebase";
 // import { publicRoutes } from './routes';
 
 function App() {
+
+  async function requestPermission() {
+    const permission = await Notification.requestPermission()
+    if (permission === "granted") {
+        const token = await getToken(messaging, {
+          vapidKey:
+            "BDYnLI-lWyP8cZUlOscmyqO4VGNVWVCMkio1T8ZZOoVW227bA-UoTYX4N_QpXzJOOjayK79OvJg_p00PnqyolZM",
+        })
+        console.log('Token Gen', token)
+      }else if(permission === "denied") {
+        alert('you denied for the notification')
+      }
+  }
+  
+  
+  useEffect(()=>{
+    requestPermission()
+  },[])
+  
+
+
   return (
     <div className="App">
       <AuthContextProvider>
